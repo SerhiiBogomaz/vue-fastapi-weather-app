@@ -1,0 +1,31 @@
+{
+  "name": "Fullstack Python + Vue Dev Container",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "runServices": ["backend", "frontend"],
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "octref.vetur",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "python.analysis.extraPaths": ["${workspaceFolder}/backend/app"],
+        "python.autoComplete.extraPaths": ["${workspaceFolder}/backend/app"],
+        "python.defaultInterpreterPath": "/workspace/backend/.venv/bin/python",
+        "eslint.validate": ["javascript", "javascriptreact", "vue"],
+        "vetur.validation.template": false
+      }
+    }
+  },
+  "postCreateCommand": "pip install -r backend/requirements.txt",
+  "remoteUser": "root",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ]
+}
